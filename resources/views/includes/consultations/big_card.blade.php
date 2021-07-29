@@ -1,0 +1,47 @@
+
+    <div class="card {{ $margin_top }}">
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <a class="btn btn-outline-orange btn-sm">
+                    {{ $consultation->consultation_category->name }}
+                </a>
+                <small class="text-muted">
+                    {{ $consultation->personalInfo() }}
+                </small>
+            </div>
+            <a href="{{ route('consultations.show',
+                              ['id'=>$consultation->id,'slug'=>$consultation->slug] ) }}"
+                class="fw-bold text-decoration-none text-dark d-block mt-3">
+                {{ $consultation->title }}
+            </a>
+            <a href="{{ route('consultations.show',
+                        ['id'=>$consultation->id,'slug'=>$consultation->slug] ) }}"
+                class="d-block text-decoration-none text-dark  my-3">
+                {{ Str::limit($consultation->content,200) }}
+            </a>
+
+        </div>
+        <div class="card-footer text-muted d-block d-sm-flex
+                             justify-content-between flex-wrap align-items-center">
+            <div class="d-flex align-items-center">
+                <small>
+                    <i class="bi bi-calendar3 me-2"></i>
+                    <span class="mb-1">
+                        {{ \App\Http\Controllers\GeneralController::toArabicDate($consultation->created_at) }}
+                    </span>
+                    |
+                    <span class="mb-1">{{ $consultation->views }} مشاهدة</span>
+                    |
+                    <span class="mb-1">{{ count($consultation->comments) }} تعليقات</span>
+                </small>
+            </div>
+            <div class="mt-3 mt-sm-0 text-center text-sm-start">
+                <a href="{{ route('consultations.show',
+                        ['id'=>$consultation->id,'slug'=>$consultation->slug] ) }}"
+                    class="btn btn-outline-info btn-sm mb-1">شاهد التعليقات</a>
+            </div>
+        </div>
+    </div>
+
