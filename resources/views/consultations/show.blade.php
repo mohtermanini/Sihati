@@ -19,7 +19,7 @@
                     <div class="card-body">
 
                         <div class="d-flex justify-content-between align-items-center flex-wrap">
-                            <a href="" class="btn btn-outline-orange btn-sm">
+                            <a href="{{ route('consultations.index',['tags[]'=>$consultation->consultation_category->id])}}" class="btn btn-outline-orange btn-sm">
                                 {{ $consultation->consultation_category->name }}
                             </a>
                             <small class="text-muted">

@@ -14,7 +14,7 @@
             <div class="carousel-item {{$i==0?'active':''}} h-100"> <img src='{{ asset("$slide->img") }}'
                     class="h-100 w-100" >
                 <div class="carousel-caption" style="top:10%;">
-                    <div class="p-5 " style="background-color: rgba(0,0,0,0.5);  word-wrap: break-word; ">
+                    <div class="p-5 overflow-auto" style="max-height:100%; background-color: rgba(0,0,0,0.5);  word-wrap: break-word; ">
                     <h2>{{$slide->title}}</h2>
                     <p>{!! $slide->content !!}</p>
                 </div>

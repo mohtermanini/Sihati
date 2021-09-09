@@ -1,4 +1,8 @@
 /* CSS Document */
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -12,6 +16,29 @@ a {
 .grey-hover:hover {
   background-color: #E5E5E5;
   color: yellow;
+}
+
+@media (max-width: 400px){
+  .col-vs-8{
+    width: 66.6666666667%;
+  }
+.col-vs-11{
+    width: 91.6666666667%;
+   }
+  .col-vs-12{
+    width: 100%;
+  }
+}
+
+.fz-default{
+  font-size: 1rem;
+}
+.row-gap-5{
+  row-gap: 5px;
+}
+
+.nav-link-grey-hover:hover{
+  background-color: rgba(255,255,255,0.25);
 }
 
 .navbar-link {
@@ -44,10 +71,6 @@ a {
   background-color: orange !important;
 }
 
-.grey-hover:hover{
-	background-color: #E5E5E5 !important;
-}
-
 .siteSectionCard {
   border: 0 !important;
   height: 100%;
@@ -65,6 +88,13 @@ a {
 }
 .breadcrumb-item::before{
   color: #0dcaf0 !important;
-
 }
-/*# sourceMappingURL=main.css.map */
+
+#topNavbar .navbar-link, #topNavbar .nav-link{
+  box-shadow: none;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

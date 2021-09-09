@@ -21,6 +21,8 @@ class CreateProfilesTable extends Migration
             $table->date('birthday')->nullable();
             $table->integer('gender')->default(-1);
             $table->text('description')->nullable();
+            $table->boolean('email_visible')->default(0);
+            $table->boolean('birthday_visible')->default(0);
             $table->timestamps();
         });
     }

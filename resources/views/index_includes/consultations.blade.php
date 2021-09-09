@@ -13,17 +13,18 @@
       </div>
   </header>
   <article>
-    <div class="row mt-5"> 
+    <div class="row justify-content-center mt-5"> 
       <!-- Items -->
       @if($consultations->count() > 0)
       @foreach($consultations as $consultation)
-      <div class="col-sm-6 col-lg-4 mb-3">
+      <div class="col-vs-12 col-10 col-md-6 col-lg-4 mb-3">
         <div class="card h-100 ">
           <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
             <p class="text-muted mb-1"> 
               {{ $consultation->personalInfo() }}
              </p>
-            <a href="#" class="btn btn-sm btn-outline-orange mb-1">
+            <a href="{{ route('consultations.index',['tags[]'=>$consultation->consultation_category->id])}}"
+               class="btn btn-sm btn-outline-orange mb-1 box-shadow-none">
               {{ $consultation->consultation_category->name  }}</a> </div>
           <div class="card-body">
              <a href="{{ route('consultations.show',
@@ -34,7 +35,7 @@
             <div class="border p-2 mt-3 rounded">
               <p class="text-muted mb-2" style="margin-top:-20px;"> 
                 <span class="px-1" style="background-color: white;">أجاب عن السؤال</span> </p>
-              <div class="d-flex flex-wrap flex-sm-nowrap">
+              <div class="d-flex flex-wrap flex-lg-nowrap" style="row-gap: 5px;">
                  <img src="{{ asset($consultation->comments[0]->user->profile->avatar) }}" 
                       height="75" width="75" class="rounded-circle me-2" alt="">
                 <div>

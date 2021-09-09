@@ -42,17 +42,19 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
         $validator = Validator::make($request->all(),[
             'email' => 'required',
             'user_name' => 'required',
             'password' => 'required',
-            'type_id' => 'integer|between:2,3'
+            'type_id' => 'integer|between:2,3',
+            'birthday' => 'before_or_equal:'.date("Y-m-d")
         ], [
             "type_id.integer" => "يرجى اختيار نوع الحساب من القائمة",
             "type_id.between" => "يرجى اختيار نوع الحساب من القائمة",
             "email.required" => "البريد الالكتروني مطلوب",
             "user_name.required" => "اسم المستخدم مطلوب",
+            "birthday.before_or_equal" => "يرجى اختيار تاريخ قبل تاريخ اليوم الحالي"
 
         ]);
         if( $validator->fails() ){
@@ -165,7 +167,9 @@ class UsersController extends Controller
                 'last_name' => $request->lname,
                 'birthday' => $request->birthday,
                 'gender' => $request->gender,
-                'description' => $request->description
+                'description' => $request->description,
+                'email_visible' => $request->filled('email_visible')? 1:0,
+                'birthday_visible' => $request->filled('birthday_visible')? 1:0
             ]);
             Session::flash("success","تم تعديل الملف الشخصي بنجاح");
         }
@@ -224,6 +228,7 @@ class UsersController extends Controller
             }
             $failedMsg .= "أو كلمة السر غير صحيحان";
             Session::flash("failed",$failedMsg);
+            Session::flash("emailOrUserName", $request->emailOrUserName);
             return redirect()->back();
         }
         Auth::loginUsingId($user->id,true);

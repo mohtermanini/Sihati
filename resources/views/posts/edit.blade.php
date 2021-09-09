@@ -80,6 +80,7 @@
   <script>
     $(document).ready(function(){
       $('#summernote').summernote("code",'{!!$post->content!!}');
+
     });
   </script>
   @include('includes.scripts.image_preview')

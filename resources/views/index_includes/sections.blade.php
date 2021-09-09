@@ -15,10 +15,10 @@
         </div>
     </header>
     <nav>
-        <div id="siteSectionsRow" class="row mt-5">
+        <div id="siteSectionsCardsContainer" class="row justify-content-center justify-content-sm-start mt-5">
               <!-- Sections cards -->
             @foreach($postCategories as $postCategory)
-                <div class="col-6 col-md-3 col-lg-2 mb-3">
+                <div class="col-vs-8 col-6 col-sm-6 col-md-3 col-lg-2 mb-3">
                     <a href="{{ route('posts.index',['slug'=> $postCategory->slug]) }}"
                          class="card siteSectionCard">
                         <div class="card-img-top"> <img src="{{ asset($postCategory->img) }}" class="w-100 rounded-3"
@@ -52,11 +52,11 @@
     <script>
         $(document).ready(function(){
             $("#btnSectionsMore").click(function(){
-                $("#siteSectionsRow").children().removeClass("d-none");
+                $("#siteSectionsCardsContainer").children().removeClass("d-none");
                 toggleShowButtons();
             });
             $("#btnSectionsLess").click(function(){
-                removeCards();
+                removeCards(true);
                 toggleShowButtons();
             });
             function toggleShowButtons(){
@@ -67,32 +67,55 @@
                 $("#btnSectionsMore").addClass("d-none");
                 $("#btnSectionsLess").addClass("d-none");
             }
-            let showCardsNum = -1;
-            function removeCards(){
-                breakpoints = {"sm" : 576,"md" : 768, "lg" : 992};
+            let previousBreakpoint;
+            function removeCards(btnClicked = false){
                 let width = document.documentElement.clientWidth;
-                let cardsNum = {{ $postCategories->count() }};
-                let newShowCardsNum = showCardsNum;
-                if(width>= breakpoints.lg) newShowCardsNum = 12;
-                else if(width>= breakpoints.md) newShowCardsNum = 8;
-                else if(width>= breakpoints.sm) newShowCardsNum = 6;
-                if(showCardsNum == newShowCardsNum){
+                let currentBreakpoint = assignBreakpoint(width);
+                if(!btnClicked && previousBreakpoint === currentBreakpoint){
                     return;
                 }
-                showCardsNum = newShowCardsNum;
-                $("#siteSectionsRow").children().slice(0,showCardsNum ).removeClass("d-none");
-                $("#siteSectionsRow").children().slice(showCardsNum).addClass("d-none");
+                let showCardsNum = -1;
+                switch(currentBreakpoint){
+                    case "lg":
+                     showCardsNum = 12;
+                    break;
+                    case "md":
+                     showCardsNum = 4;
+                    break;
+                    case "sm":
+                     showCardsNum = 4;
+                    break;  
+                    case "vsm":
+                        showCardsNum = 3;
+                    break;
+                }
 
-                if( showCardsNum >= cardsNum){
+                $("#siteSectionsCardsContainer").children().slice(0,showCardsNum ).removeClass("d-none");
+                $("#siteSectionsCardsContainer").children().slice(showCardsNum).addClass("d-none");
+                let allCardsNum = {{ $postCategories->count() }};
+                if( showCardsNum >= allCardsNum){
                     removeToggleButtons();
                 }
-                else{
-                    $("#btnSectionsMore").removeClass("d-none");
-                    $("#btnSectionsLess").addClass("d-none");
+                else if(!btnClicked){
+                   $("#btnSectionsMore").removeClass("d-none");
+                   $("#btnSectionsLess").addClass("d-none");
                 }
+                previousBreakpoint = currentBreakpoint;
+            }
+            function assignBreakpoint(width){
+                breakpoints = {"sm" : 576,"md" : 768, "lg" : 992};
+                let currentBreakpoint = "vsm";
+                for(key in breakpoints){
+                    if(width >= breakpoints[key]){
+                        currentBreakpoint = key;
+                    }
+                }
+                return currentBreakpoint;
             }
             removeCards();
-            window.onresize = removeCards;
+            window.addEventListener("resize",function(){
+                removeCards();
+            });
          
         });
     </script>

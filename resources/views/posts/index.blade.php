@@ -94,7 +94,7 @@
                   <div class="p-3"> 
                   <a href="{{ route('posts.show',['id'=>$post->id, 'slug'=> $post->slug])}}"
                        class="text-dark">
-                  <small>{{ Str::limit(strip_tags($post->content),130) }}</small>
+                  <small>{!! Str::limit(strip_tags($post->content),130) !!}</small>
                   </a>
                   <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <!-- Writers -->

@@ -3,7 +3,7 @@
 
         <div class="card-body">
 
-            <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div class="d-flex justify-content-between align-items-center flex-wrap row-gap-5">
                 <a class="btn btn-outline-orange btn-sm">
                     {{ $consultation->consultation_category->name }}
                 </a>
@@ -11,16 +11,20 @@
                     {{ $consultation->personalInfo() }}
                 </small>
             </div>
-            <a href="{{ route('consultations.show',
-                              ['id'=>$consultation->id,'slug'=>$consultation->slug] ) }}"
-                class="fw-bold text-decoration-none text-dark d-block mt-3">
+            <h2 class="mt-3 fz-default">
+                <a href="{{ route('consultations.show',
+                ['id'=>$consultation->id,'slug'=>$consultation->slug] ) }}"
+                class="text-dark">
                 {{ $consultation->title }}
-            </a>
-            <a href="{{ route('consultations.show',
-                        ['id'=>$consultation->id,'slug'=>$consultation->slug] ) }}"
-                class="d-block text-decoration-none text-dark  my-3">
+                </a>
+            </h2>
+            <p class="  my-3">
+                <a href="{{ route('consultations.show',
+                ['id'=>$consultation->id,'slug'=>$consultation->slug] ) }}"
+                class="text-dark">
                 {{ Str::limit($consultation->content,200) }}
             </a>
+            </p>
 
         </div>
         <div class="card-footer text-muted d-block d-sm-flex

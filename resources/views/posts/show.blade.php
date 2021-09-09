@@ -29,7 +29,7 @@
               <small>{{ $post->views }} مشاهدة</small>
                </div>
           </div>
-          <img src=" {{ asset($post->img) }}" alt="" class="w-100" style="max-height: 250px;">
+          <img src=" {{ asset($post->img) }}" alt="" class="w-100" style="max-height: 400px;">
           <div class="card-body">
             <div class="mt-3">
               {!! $post->content !!}
@@ -76,7 +76,7 @@
 
                 <p class="ms-2">
                 <small>
-                  {{$user->profile->description}}
+                  {{Str::limit($user->profile->description,300)}}
                 </small>
                  </p>
                   </div>

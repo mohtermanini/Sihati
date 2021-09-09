@@ -106,11 +106,11 @@ class PostsController extends Controller
             $img_name = time().$request->img->getClientOriginalName();
             $request->img->move('files/posts/',$img_name);
         }
-
+        
         $post = Post::create([
             'title' => $request->title,
             'slug' => GeneralController::make_slug($request->title),
-            'content' => $request->content,
+            'content' => $this->replacePostContent($request->content),
             'img' => 'files/posts/' . $img_name,
             'post_category_id' => $request->post_category_id
         ]);
@@ -228,7 +228,7 @@ class PostsController extends Controller
         $post->update([
             'title' => $request->title,
             'slug' => GeneralController::make_slug($request->title),
-            'content' => $request->content,
+            'content' => $this->replacePostContent($request->content),
             'post_category_id' => $request->post_category_id
         ]);
         Session::flash("success","تم تعديل المقالة بنجاح");
@@ -268,5 +268,17 @@ class PostsController extends Controller
         return collect($arr);
     }
 
-    
+    public function replacePostContent($content){
+        $new_content = "";
+        for($i=0;$i<strlen($content);$i++){
+            switch($content[$i]){
+                case "'":
+                    $new_content .= "&apos;";
+                break;
+                default:
+                $new_content .= $content[$i];
+            }
+        }
+        return $new_content;
+    }
 }

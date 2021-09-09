@@ -12,11 +12,11 @@
                         <div class="text-center">
                             <img src="{{ asset($user->profile->avatar) }}" class="rounded-circle" width="75"
                                 height="75" alt="">
-                            <p class="mt-2 mb-0 fw-bold">
+                            <p class="mt-2 mb-0 fw-bold text-primary">
                                 {{ $user->profile->first_name }}
                                 {{ $user->profile->last_name }}
                             </p>
-                            <p class="mb-0 fw-bold">
+                            <p class="mb-0 fw-bold text-primary">
                                 {{ $user->user_name }}
                             </p>
                         </div>
@@ -27,9 +27,8 @@
             <div class="col-md-8">
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="nav-item">
-                        <button class="nav-link text-info btnTab active" data-bs-toggle="tab" 
-												data-bs-target="#profile">الملف
-                            الشخصي</button>
+                        <button class="nav-link btnTab active" data-bs-toggle="tab" 
+												data-bs-target="#profile">الملف الشخصي</button>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link text-dark btnTab" data-bs-toggle="tab"
@@ -67,6 +66,12 @@
                                         <input type="email" class="form-control text-start  box-shadow-none" name="email"
                                             value="{{ $user->email }}" placeholder="البريد الالكتروني" required
                                             readonly>
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input box-shadow-none" type="checkbox" name="email_visible" {{$user->profile->email_visible?'checked':''}} disabled>
+                                            <label class="form-check-label" for="email_visible">
+                                                إظهار البريد الاكتروني للجميع
+                                            </label>
+                                        </div>
                                     </div>
 
                                     <div class="form-group mt-3">
@@ -81,6 +86,12 @@
                                         <input type="date" class="form-control text-start  box-shadow-none" name="birthday"
                                             value="{{ $user->profile->birthday }}" placeholder="تاريخ الميلاد"
                                             readonly>
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input box-shadow-none" type="checkbox" name="birthday_visible" {{$user->profile->birthday_visible?'checked':''}} disabled>
+                                            <label class="form-check-label" for="birthday_visible">
+                                                إظهار تاريخ الميلاد للجميع
+                                            </label>
+                                        </div>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="" class="form-label">الجنس</label>
@@ -106,7 +117,7 @@
                                         <ul class="mt-3 list-unstyled">
                                         @foreach($user->profile->jobs as $job)
                                         <li class="d-inline-block mb-3">
-                                            <button class="btn btn-outline-info me-2 btn-sm rounded-pill">
+                                            <button type="button" class="btn btn-outline-info me-2 btn-sm rounded-pill">
                                             {{$job->title}}  
                                             </button>
                                         </li>
@@ -134,7 +145,7 @@
                         <!-- Consultations -->
                         @if($consultations->count() == 0)
                         <div class="d-flex justify-content-center align-items-center h-100 mt-5">
-                            <h5>لم تقم بأي استشارة</h5>
+                            <h5 class="text-danger">لم تقم بأي استشارة</h5>
                         </div>
                         @else
                         @foreach($consultations as $consultation)
@@ -166,7 +177,7 @@
                             <h4 class="mt-5 text-center">جميع المقالات التي قمت بكتابتها</h4>
                             @if(count($posts)==0)
                                 <div class="d-flex justify-content-center align-items-center h-100 mt-5">
-                                    <h5>لايوجد مقالات في هذا القسم بعد</h5>
+                                    <h5 class="text-danger">لايوجد مقالات في هذا القسم بعد</h5>
                                 </div>
                             @else
                                 <!-- Posts -->
@@ -277,4 +288,13 @@
     });
 
 </script>
+@endsection
+
+
+@section('styles')
+    <style>
+    .nav-tabs .nav-item .active{
+        color: #0dcaf0!important;
+    }
+    </style>
 @endsection

@@ -10,7 +10,8 @@ class Profile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['first_name','last_name','avatar','birthday','gender','description'];
+    protected $fillable = ['first_name','last_name','avatar','birthday','gender','description',
+                 'email_visible', 'birthday_visible'];
 
     public function titleFromGender(){
         if($this->gender == -1){
