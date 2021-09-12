@@ -43,7 +43,6 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {        
-        dd($request);
         $validator = Validator::make($request->all(),[
             'email' => 'required',
             'user_name' => 'required',
@@ -62,9 +61,6 @@ class UsersController extends Controller
             Session::flash("failed",$validator->errors()->first());;
             return redirect()->back();
         }
-        
-        
-
         $failedMsg = $this->duplicatedUserNameOrEmail($request->email,$request->user_name);
         if(isset($failedMsg)){
             Session::flash("failed",$failedMsg);
@@ -218,6 +214,7 @@ class UsersController extends Controller
             'emailOrUserName' => 'required',
             'password' => 'required'
         ]);
+        dd($request);
         $col = "user_name";
         if(filter_var($request->emailOrUserName, FILTER_VALIDATE_EMAIL) ){
             $col = "email";
