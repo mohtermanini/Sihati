@@ -95,10 +95,9 @@
 
 
 @section('scripts')
-	  <script src="https://www.google.com/recaptcha/api.js?hl=ar" async defer></script>
 		<script>
-			let recapatchaResize = ()=>{
-				console.log(1);
+			document.ready(function(){
+				let recapatchaResize = ()=>{
 				let width = document.documentElement.clientWidth;
 				let resizeScreenSizeBreakpoint = 450;
 				if(width <= resizeScreenSizeBreakpoint){
@@ -109,7 +108,10 @@
 			}
 			recapatchaResize();
 			window.onresize = recapatchaResize;
+			});
 		</script>
+		<script src="https://www.google.com/recaptcha/api.js?hl=ar" async defer></script>
+
 @endsection
         
      
