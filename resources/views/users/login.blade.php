@@ -23,12 +23,7 @@
 	}
 	.form-group{
 			margin-top: 1rem;
-			margin-bottom: 3rem;
 	}
-	.g-recaptcha{
-		max-width: 300px !important;
-	}
-	
 </style>
 
 @stop
@@ -103,6 +98,7 @@
 	  <script src="https://www.google.com/recaptcha/api.js?hl=ar" async defer></script>
 		<script>
 			let recapatchaResize = ()=>{
+				console.log(1);
 				let width = document.documentElement.clientWidth;
 				let resizeScreenSizeBreakpoint = 450;
 				if(width <= resizeScreenSizeBreakpoint){
