@@ -97,14 +97,19 @@
 @section('scripts')
 		<script>
 			$(document).ready(function(){
+				let d = 1360;
 				let recapatchaResize = ()=>{
 				let width = document.documentElement.clientWidth;
 				let resizeScreenSizeBreakpoint = 450;
+				/*
 				if(width <= resizeScreenSizeBreakpoint){
 					$(".g-recaptcha").attr("data-size","compact");
 				}else{
 					$(".g-recaptcha").attr("data-size","normal");
 				}
+				*/
+				let x = (d-width)/d;
+				$(".g-recaptcha").css("transform","scale("+x+ ")");
 			}
 			recapatchaResize();
 			window.onresize = recapatchaResize;
