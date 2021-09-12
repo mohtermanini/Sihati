@@ -69,7 +69,9 @@
 						id="password" placeholder="كلمة المرور" required>
 				</div>
 				<div class="form-group text-center">
-					<div class="g-recaptcha d-inline-block" data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
+					<div class="g-recaptcha d-inline-block"
+					data-theme="dark light"
+					data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
 				</div>
 				<div class="form-group text-center">
 				<button type="submit" class="btn btn-outline-success">تسجيل الدخول</button>
@@ -93,7 +95,7 @@
 
 
 @section('scripts')
-	  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	  <script src="https://www.google.com/recaptcha/api.js?hl=ar" async defer></script>
 @endsection
         
      
