@@ -24,6 +24,9 @@
 	.form-group{
 			margin-top: 1rem;
 	}
+	.rc-anchor-normal{
+		max-width: 300px;
+	}
 </style>
 
 @stop
