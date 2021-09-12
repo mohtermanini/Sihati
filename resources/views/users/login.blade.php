@@ -108,7 +108,7 @@
 					$(".g-recaptcha").attr("data-size","normal");
 				}
 				*/
-				let x = (d-width)/d;
+				let x = width/d;
 				$(".g-recaptcha").css("transform","scale("+x+ ")");
 			}
 			recapatchaResize();
