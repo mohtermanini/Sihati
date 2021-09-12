@@ -68,11 +68,13 @@
 					<input type="password" class="form-control box-shadow-none" name="password"
 						id="password" placeholder="كلمة المرور" required>
 				</div>
+				<!-- 
 				<div class="form-group recapatcha-container flex-center">
 					<div class="g-recaptcha"
 					data-size	="normal"
 					data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
 				</div>
+				 -->
 				<div class="form-group text-center">
 				<button type="submit" class="btn btn-outline-success">تسجيل الدخول</button>
 				</div>
@@ -95,6 +97,8 @@
 
 
 @section('scripts')
+
+<!-- 
 		<script>
 			$(document).ready(function(){
 				let d = 1360;
@@ -119,7 +123,7 @@
 			});
 		</script>
 		<script src="https://www.google.com/recaptcha/api.js?hl=ar" async defer></script>
-
+ -->
 @endsection
         
      
