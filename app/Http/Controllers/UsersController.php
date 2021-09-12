@@ -218,7 +218,7 @@ class UsersController extends Controller
             'secret' => '6LebfmAcAAAAAEIj1nKbzn29EDAYV5k92lwFyD9g',
             'response' => $request['g-recaptcha-response']
         ]);
-        dd($response);
+        dd($response['success']);
         $col = "user_name";
         if(filter_var($request->emailOrUserName, FILTER_VALIDATE_EMAIL) ){
             $col = "email";
