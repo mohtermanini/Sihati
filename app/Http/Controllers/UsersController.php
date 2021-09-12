@@ -214,7 +214,7 @@ class UsersController extends Controller
             'emailOrUserName' => 'required',
             'password' => 'required'
         ]);
-        dd($request);
+        dd($request['g-recaptcha-response']);
         $col = "user_name";
         if(filter_var($request->emailOrUserName, FILTER_VALIDATE_EMAIL) ){
             $col = "email";
