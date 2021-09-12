@@ -23,11 +23,12 @@
 	}
 	.form-group{
 			margin-top: 1rem;
+			margin-bottom: 3rem;
 	}
-	.recapatcha-container > *{
+	.g-recaptcha{
 		max-width: 300px !important;
-		width: 10 !important;
 	}
+	
 </style>
 
 @stop
