@@ -68,8 +68,8 @@
 					<input type="password" class="form-control box-shadow-none" name="password"
 						id="password" placeholder="كلمة المرور" required>
 				</div>
-				<div class="form-group text-center recapatcha-container">
-					<div class="g-recaptcha d-inline-block"
+				<div class="form-group recapatcha-container flex-center">
+					<div class="g-recaptcha"
 					data-size	="normal"
 					data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
 				</div>
@@ -100,16 +100,19 @@
 				let d = 1360;
 				let recapatchaResize = ()=>{
 				let width = document.documentElement.clientWidth;
+
 				let resizeScreenSizeBreakpoint = 450;
-				/*
 				if(width <= resizeScreenSizeBreakpoint){
 					$(".g-recaptcha").attr("data-size","compact");
-				}else{
-					$(".g-recaptcha").attr("data-size","normal");
 				}
-				*/
-				let x = width/d;
-				$(".g-recaptcha").css("transform","scale("+x+ ")");
+
+				let greacapatchaParentWidth = $(".g-recaptcha").parent().width();
+				let greacapatchaWidth = $(".g-recaptcha").width();
+				let scale = 1;
+				if(greacapatchaParentWidth < greacapatchaWidth){
+					scale = greacapatchaParentWidth/greacapatchaWidth;
+				}
+				$(".g-recaptcha").css("transform","scale("+scale+ ")");
 			}
 			recapatchaResize();
 			window.onresize = recapatchaResize;
