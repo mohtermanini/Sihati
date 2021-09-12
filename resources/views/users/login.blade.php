@@ -70,8 +70,7 @@
 				</div>
 				<div class="form-group text-center">
 					<div class="g-recaptcha d-inline-block"
-					data-theme="dark"
-					data-size	="compact"
+					data-size	="normal"
 					data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
 				</div>
 				<div class="form-group text-center">
@@ -97,6 +96,19 @@
 
 @section('scripts')
 	  <script src="https://www.google.com/recaptcha/api.js?hl=ar" async defer></script>
+		<script>
+			let recapatchaResize = ()=>{
+				let width = document.documentElement.clientWidth;
+				let resizeScreenSizeBreakpoint = 450;
+				if(width <= resizeScreenSizeBreakpoint){
+					$(".g-recaptcha").attr("data-size","compact");
+				}else{
+					$(".g-recaptcha").attr("data-size","normal");
+				}
+			}
+			recapatchaResize();
+			window.onresize = recapatchaResize;
+		</script>
 @endsection
         
      
