@@ -11,7 +11,7 @@ use App\Models\Job;
 
 use Illuminate\Pagination\Paginator;
 use Ds\Set;
-use Config,Session, Auth, stdClass, DB, Validator;
+use Config,Session, Auth, stdClass, DB, Validator, Http;
 
 class UsersController extends Controller
 {
