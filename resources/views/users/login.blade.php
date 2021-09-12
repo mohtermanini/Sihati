@@ -24,8 +24,9 @@
 	.form-group{
 			margin-top: 1rem;
 	}
-	.rc-anchor-normal{
+	.recapatcha-container > *{
 		max-width: 300px !important;
+		width: 10 !important;
 	}
 </style>
 
@@ -71,7 +72,7 @@
 					<input type="password" class="form-control box-shadow-none" name="password"
 						id="password" placeholder="كلمة المرور" required>
 				</div>
-				<div class="form-group text-center">
+				<div class="form-group text-center recapatcha-container">
 					<div class="g-recaptcha d-inline-block"
 					data-size	="normal"
 					data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
