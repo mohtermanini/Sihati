@@ -25,7 +25,7 @@
 			margin-top: 1rem;
 	}
 	.rc-anchor-normal{
-		max-width: 300px;
+		max-width: 300px !important;
 	}
 </style>
 
