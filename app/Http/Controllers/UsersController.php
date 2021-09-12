@@ -214,7 +214,11 @@ class UsersController extends Controller
             'emailOrUserName' => 'required',
             'password' => 'required'
         ]);
-        dd($request['g-recaptcha-response']);
+        $response = Http::post('https://www.google.com/recaptcha/api/siteverify',[
+            'secret' => '6LebfmAcAAAAAEIj1nKbzn29EDAYV5k92lwFyD9g',
+            'response' => $request['g-recaptcha-response']
+        ]);
+        dd($response);
         $col = "user_name";
         if(filter_var($request->emailOrUserName, FILTER_VALIDATE_EMAIL) ){
             $col = "email";

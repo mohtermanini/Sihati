@@ -68,8 +68,8 @@
 					<input type="password" class="form-control box-shadow-none" name="password"
 						id="password" placeholder="كلمة المرور" required>
 				</div>
-				<div class="form-group">
-					<div class="g-recaptcha text-center" data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
+				<div class="form-group text-center">
+					<div class="g-recaptcha d-inline-block" data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
 				</div>
 				<div class="form-group text-center">
 				<button type="submit" class="btn btn-outline-success">تسجيل الدخول</button>
