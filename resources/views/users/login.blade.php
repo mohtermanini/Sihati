@@ -70,7 +70,8 @@
 				</div>
 				<div class="form-group text-center">
 					<div class="g-recaptcha d-inline-block"
-					data-theme="dark light"
+					data-theme="dark"
+					data-size	="compact"
 					data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
 				</div>
 				<div class="form-group text-center">
