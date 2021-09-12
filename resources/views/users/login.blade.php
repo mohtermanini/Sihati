@@ -96,7 +96,7 @@
 
 @section('scripts')
 		<script>
-			document.ready(function(){
+			$(document).ready(function(){
 				let recapatchaResize = ()=>{
 				let width = document.documentElement.clientWidth;
 				let resizeScreenSizeBreakpoint = 450;
