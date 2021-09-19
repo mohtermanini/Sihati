@@ -11,7 +11,7 @@ use App\Models\Job;
 
 use Illuminate\Pagination\Paginator;
 use Ds\Set;
-use Config,Session, Auth, stdClass, DB, Validator;
+use Config,Session, Auth, stdClass, DB, Validator, Http;
 
 class UsersController extends Controller
 {
@@ -214,12 +214,15 @@ class UsersController extends Controller
             'emailOrUserName' => 'required',
             'password' => 'required'
         ]);
-        /*
-         $response = Http::post('https://www.google.com/recaptcha/api/siteverify',[
+       
+         $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify',[
             'secret' => '6LebfmAcAAAAAEIj1nKbzn29EDAYV5k92lwFyD9g',
             'response' => $request['g-recaptcha-response']
         ]);
-        */
+        if(!json_decode($response)->success){
+            Session::flash('recaptcha-error','خطأ في التحقق، الرجاء إعادة المحاولة');
+            return redirect()->back();
+        }
         $col = "user_name";
         if(filter_var($request->emailOrUserName, FILTER_VALIDATE_EMAIL) ){
             $col = "email";
