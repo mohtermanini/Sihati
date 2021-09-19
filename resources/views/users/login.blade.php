@@ -73,6 +73,7 @@
 					 {{Session::has('recaptcha-error')?'is-invalid':''}}">
 					<div class="g-recaptcha"
 					data-size	="normal"
+					data-theme = "light"
 					data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
 				</div>
 				@if(Session::has('recaptcha-error'))

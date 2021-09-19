@@ -219,6 +219,7 @@ class UsersController extends Controller
             'secret' => '6LebfmAcAAAAAEIj1nKbzn29EDAYV5k92lwFyD9g',
             'response' => $request['g-recaptcha-response']
         ]);
+        dd(json_decode($response));
         if(!json_decode($response)->success){
             Session::flash('recaptcha-error','خطأ في التحقق، الرجاء إعادة المحاولة');
             return redirect()->back();
