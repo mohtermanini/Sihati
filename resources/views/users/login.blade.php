@@ -74,7 +74,7 @@
 					<div class="g-recaptcha"
 					data-size	="normal"
 					data-theme = "light"
-					data-sitekey="6LebfmAcAAAAABu4maMwoPvtd4NN7uCzTbmEFaF9"></div>
+					data-sitekey="6LdndykfAAAAAClvyNwK-vYAmQ5QjGQ9a1acKb6-"></div>
 				</div>
 				@if(Session::has('recaptcha-error'))
 				<span class="invalid-feedback" role="alert">

@@ -225,7 +225,7 @@ class UsersController extends Controller
         ]);
        
          $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify',[
-            'secret' => '6LebfmAcAAAAAEIj1nKbzn29EDAYV5k92lwFyD9g',
+            'secret' => '6LdndykfAAAAABl5UYLHfPOQg0G7_8dSUor8cOE0',
             'response' => $request['g-recaptcha-response']
         ]);
         if(!json_decode($response)->success){
