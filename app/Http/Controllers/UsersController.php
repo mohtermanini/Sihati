@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Ds\Set;
+use App\Models\Job;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\Profile;
-use App\Models\Post;
 use App\Models\Consultation;
-use App\Models\Job;
 
+use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
-use Ds\Set;
+use App\Http\Controllers\GeneralController;
+use Illuminate\Support\Facades\RateLimiter;
 use Config,Session, Auth, stdClass, DB, Validator, Http;
 
 class UsersController extends Controller
@@ -210,6 +212,7 @@ class UsersController extends Controller
         return view('users.login')->with("page_title",$page_title);
     }
     public function loginCheck(Request $request){
+
         $this->validate($request,[
             'emailOrUserName' => 'required',
             'password' => 'required'
@@ -223,6 +226,19 @@ class UsersController extends Controller
             Session::flash('recaptcha-error','خطأ في التحقق، الرجاء إعادة المحاولة');
             return redirect()->back();
         }
+
+        $rate_limiter_name = $request->emailOrUserName."|".GeneralController::getIp();
+        if( RateLimiter::tooManyAttempts($rate_limiter_name, $maxAttempts = 5) ){
+            $time_left = RateLimiter::availableIn($rate_limiter_name);
+            $min = floor($time_left/60);
+            $sec = $time_left%60;
+            $failedMsg = "لقد تجاوزت العدد الأقصى من المحاولات من أجل اسم المستخدم أو البريد الالكتروني المدخل ".
+                        "يرجى إعادة المحاولة بعد ". ($min>0?" {$min} دقيقة و":""). "${sec} ثانية";
+            Session::flash("failed",$failedMsg);
+            Session::flash("emailOrUserName", $request->emailOrUserName);
+            return redirect()->back();
+        }
+        
         $col = "user_name";
         if(filter_var($request->emailOrUserName, FILTER_VALIDATE_EMAIL) ){
             $col = "email";
@@ -230,6 +246,8 @@ class UsersController extends Controller
         $user = User::where($col,$request->emailOrUserName)->first();
         if(!isset($user)|| !password_verify($request->password,$user->password)){
             $failedMsg = "";
+            RateLimiter::hit($rate_limiter_name, $decaySeconds = 300);
+
             if($col == "user_name"){
                 $failedMsg .= "اسم المستخدم ";
             }else{
@@ -240,6 +258,7 @@ class UsersController extends Controller
             Session::flash("emailOrUserName", $request->emailOrUserName);
             return redirect()->back();
         }
+        RateLimiter::clear($rate_limiter_name);
         Auth::loginUsingId($user->id,true);
         $request->session()->regenerateToken();
         return redirect()->route('index');
