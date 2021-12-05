@@ -7,6 +7,7 @@
 				width: auto;
 			}
 		}
+		
 	</style>
 @endsection
 @section('content')
@@ -44,7 +45,10 @@
 			<input type="email" class="form-control text-start mt-3" name="email" value="{{old('email')}}" placeholder="البريد الاكتروني" required>
       <input type="text" class="form-control text-start mt-3" name="user_name" value="{{old('user_name')}}" placeholder="اسم المستخدم" required>
     	<input type="password" class="form-control mt-3" name="password" placeholder="كلمة المرور" required>
-     	<input type="date" class="form-control text-start mt-3" name="birthday" value="{{old('birthday')}}" placeholder="تاريخ الميلاد" >
+     	<div class="form-group mt-3 d-flex flex-column flex-sm-row  flex-wrap">
+			 <label for="birthday" class="col-form-label me-3">تاريخ الميلاد</label>
+			<input type="date" class="form-control w-auto flex-grow-1 text-start" id="birthday" name="birthday" value="{{old('birthday')}}" placeholder="تاريخ الميلاد" >
+		 </div>
 			 <div class="form-group d-flex flex-column mt-3">
     		<label for="" class="form-label">اختيار صورة</label>
 				<img id="ImagePreview" src="{{ asset('files/profiles/default.png') }}" 
