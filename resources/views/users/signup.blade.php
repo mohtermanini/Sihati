@@ -1,11 +1,22 @@
 @extends('layouts.app')
 
+@section('styles')
+	<style>
+		@media (min-width: 576px){
+			.w-sm-auto{
+				width: auto;
+			}
+		}
+	</style>
+@endsection
 @section('content')
     
 
 <!-- Signup form -->
-<section class="d-flex flex-grow-1 justify-content-center align-items-center my-5">
-  <div class="card w-50">
+<section class="container flex-grow-1 my-5">
+	<div class="row justify-content-center">
+		<div class="col-lg-8 col-md-10 col-10">
+  <div class="card">
     <div class="card-header">
       <h3 class="text-center">إنشاء حساب جديد</h3>
     </div>
@@ -56,7 +67,7 @@
      	<div id="specialisationsLists">
      	<div id="specialisationChoose" class="form-group d-flex align-items-center flex-wrap justify-content-center justify-content-sm-start mt-3">
             <label for="" class="flex-shrink-0 me-2 mb-2">اختيار تخصص</label>
-            <select name="specialisations[]" class="form-select form-select-sm w-auto mb-2">
+            <select name="specialisations[]" class="form-select form-select-sm w-sm-auto mb-2">
               @foreach($jobs as $job)
               	<option value="{{ $job->id}}">{{$job->title}}</option>
               @endforeach
@@ -85,6 +96,8 @@
 			</div>
     </div>
   </div>
+</div>
+</div>
 </section>
 <!-- Signup form --> 
 @endsection
