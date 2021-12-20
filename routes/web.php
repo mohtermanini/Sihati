@@ -34,16 +34,17 @@ Route::get('posts/{id}-{slug}/edit','PostsController@edit')->name('posts.edit');
 /* Posts */
 
 /* Users */
-Route::resource('users','UsersController')->except(['update']);
+Route::resource('users','UsersController')->except(['store','update']);
 Route::put('users/update','UsersController@update')->name('users.update');
 
-Route::get('login','UsersController@login')->name('login');
-Route::post('login','UsersController@loginCheck')->name('login.check');
+Route::get('login','UsersController@login')->middleware(['guest','flash_previous_url'])->name('login');
+Route::post('login','UsersController@loginCheck')->middleware(['guest','flash_previous_url'])->name('login.check');
 Route::post('logout','UsersController@logout')->name('logout');
 
-Route::get('signup','UsersController@signup')->name('signup');
+Route::get('signup','UsersController@signup')->middleware(['guest','flash_previous_url'])->name('signup');
+Route::post('users','UsersController@store')->middleware(['guest','flash_previous_url'])->name('users.store');
 
-Route::get('profile','UsersController@profilePage')->name('profile');
+Route::get('profile','UsersController@profilePage')->middleware('auth')->name('profile');
 Route::get('profiles/doctors/search','UsersController@doctorsSearch')->name('profiles.doctors.search');
 /* Users */
 
@@ -58,3 +59,17 @@ Route::put('comments/{id}/setbest','CommentsController@setBest')->name('comments
 /* Comments */
 
 //Route::get('test',"GeneralController@test")->name('test');
+
+Route::get('test',function(){
+      return session()->all();
+});
+
+Route::get('test2',function(){
+      session()->flash('hello','world');
+      return session()->all();
+});
+
+Route::get('test3',function(){
+      $x = session()->has('hello');
+      return $x;
+});

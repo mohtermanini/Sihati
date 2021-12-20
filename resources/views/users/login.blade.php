@@ -49,7 +49,7 @@
 			<h3 class="text-center">تسجيل الدخول</h3>
 		</div>
 		<div class="card-body">
-			<form action="{{ route('login.check') }}" method="post">
+			<form id="form-login" action="{{ route('login.check') }}" method="post">
                 @csrf
 				<div class="from-group">
 					<label for="emailOrUserName" class="form-label">اسم المستخدم أو البريد الالكتروني</label>
@@ -83,7 +83,7 @@
 				@endif
 
 				<div class="form-group text-center">
-				<button type="submit" class="btn btn-outline-success">تسجيل الدخول</button>
+				<button type="submit" class="btn btn-outline-success" disabled>تسجيل الدخول</button>
 				</div>
 			</form>
 		
@@ -125,9 +125,14 @@
 				}
 				$(".g-recaptcha").css("transform","scale("+scale+ ")");
 			}
+
 			recapatchaResize();
 			window.onresize = recapatchaResize;
 			});
+			
+			window.addEventListener("load",function(){
+				$("#form-login button[type='submit']").get(0).removeAttribute("disabled");
+			})
 		</script>
 		<script src="https://www.google.com/recaptcha/api.js?hl=ar" async defer></script>
 

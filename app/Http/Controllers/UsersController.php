@@ -101,7 +101,8 @@ class UsersController extends Controller
         Session::flash("success","تم إنشاء المستخدم بنجاح");
         Auth::loginUsingId($user->id,true);
         $request->session()->regenerateToken();
-        return redirect()->route('index');
+        $previous_entry_url = session()->get('previous_entry_url', route('index'));
+        return redirect($previous_entry_url);
     }
 
     /**
@@ -211,6 +212,7 @@ class UsersController extends Controller
         $page_title = 'تسجيل الدخول' . Config::get('page_title_end');
         return view('users.login')->with("page_title",$page_title);
     }
+
     public function loginCheck(Request $request){
 
         $this->validate($request,[
@@ -261,14 +263,15 @@ class UsersController extends Controller
         RateLimiter::clear($rate_limiter_name);
         Auth::loginUsingId($user->id,true);
         $request->session()->regenerateToken();
-        return redirect()->route('index');
+        $previous_entry_url = session()->get('previous_entry_url', route('index'));
+        return redirect($previous_entry_url);
     }
 
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('index');
+        return redirect()->back();
     }
 
     public function signup(){
