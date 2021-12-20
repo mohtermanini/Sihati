@@ -59,17 +59,3 @@ Route::put('comments/{id}/setbest','CommentsController@setBest')->name('comments
 /* Comments */
 
 //Route::get('test',"GeneralController@test")->name('test');
-
-Route::get('test',function(){
-      return session()->all();
-});
-
-Route::get('test2',function(){
-      session()->flash('hello','world');
-      return session()->all();
-});
-
-Route::get('test3',function(){
-      $x = session()->has('hello');
-      return $x;
-});
