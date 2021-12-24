@@ -34,7 +34,7 @@
 @include('includes.navbar')
 <!-- Navbar -->
 
-<main class="flex-grow-1">
+<main id="main-content" class="flex-grow-1">
     @yield('content')
 </main>
 

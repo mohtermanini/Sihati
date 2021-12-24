@@ -1,6 +1,7 @@
 
 <nav id="topNavbar" class="navbar navbar-expand-md navbar-dark bg-dark pb-md-2 pb-0">
     <div class="container-md container-fluid p-0">
+        <a id="link-skip-navigation" href="#main-content">تصفح المحتوى</a>
         <a href="{{ route('index') }}" class="navbar-brand ms-2 ms-md-0">
             <div class="d-flex align-items-center">
                 <img src="{{ asset('files/logo.png') }}" width="50" height="50">
