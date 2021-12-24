@@ -95,14 +95,14 @@
                         </span> </button>
                     </form>
                     <li class="nav-item">
-                        <a  role="button"
+                        <a  role="button" href=""
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                               class="btn btn-sm btn-outline-light navbar-link d-none d-md-inline-block me-0">
                             <span class="d-flex align-items-center">
                                 <p class="mb-0 me-1">تسجيل الخروج</p>
                                 <i class="bi bi-person-circle pt-1"></i>
                             </span> </a>
-                        <a role="button"
+                        <a role="button" href=""
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                             class="nav-link d-md-none nav-link-grey-hover px-3">
                            <span class="d-flex align-items-center">
@@ -110,16 +110,6 @@
                                 <i class="bi bi-person-circle pt-1"></i>
                             </span> </a>
                     </li>
-                    <!-- 
-                    <div class="nav-link-grey-hover px-3">
-                    <button type="submit" class="nav-link d-md-none border-0"
-                            style="background-color: rgba(0,0,0,0);">
-                         <span class="d-flex align-items-center">
-                            <p class="mb-0 me-1">تسجيل الخروج</p>
-                            <i class="bi bi-person-circle pt-1"></i>
-                        </span> </button>
-                    </div>
-                     -->
                 </li>
             @endif
                 <!-- Nav item4 -->

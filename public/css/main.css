@@ -90,12 +90,6 @@ a {
   color: #0dcaf0 !important;
 }
 
-
-
-#topNavbar .navbar-link, #topNavbar .nav-link{
-  box-shadow: none;
-}
-
 #topNavbar #link-skip-navigation{
   padding: 0.5rem 1.5rem;
   background-color: #424242;
