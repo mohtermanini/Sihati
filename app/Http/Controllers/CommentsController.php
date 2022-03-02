@@ -90,7 +90,9 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::find($id)->delete();
+        Session::flash("success","تم حذف التعليق بنجاح");
+        return redirect()->back();
     }
 
     public function setBest(Request $request,$id){

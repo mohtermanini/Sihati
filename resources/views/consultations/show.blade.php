@@ -92,7 +92,7 @@
                         @endif
                         <div class="card-body">
                             <!-- Writer -->
-                            <div class="d-flex flex-wrap flex-sm-nowrap">
+                            <div class="d-flex flex-wrap flex-sm-nowrap align-items-start">
                                 <img src="{{ asset($comment->user->profile->avatar) }}" height="50" width="50"
                                     class="rounded-circle me-2 mb-2" alt="">
                                 <div>
@@ -124,6 +124,22 @@
                                     </p>
                                     @endif
                                 </div>
+                                @if(
+                                    Auth::check()
+                                    && (
+                                        Auth::user()->type_id == Config::get("type_admin_id")
+                                        || Auth::id() == $comment->user_id
+                                    )
+                                )
+                                <form action="{{ route('comments.destroy',
+                                        ['comment' => $comment->id]) }}" 
+                                        method="POST"
+                                        class="ms-auto">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button class="btn btn-sm btn-danger">حذف</button>
+                                </form>
+                                @endif
                             </div>
                             <!-- Writer -->
                             <p>
