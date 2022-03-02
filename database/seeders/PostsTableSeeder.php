@@ -25,7 +25,8 @@ class PostsTableSeeder extends Seeder
                 'views' => $el->views,
                 'likes' => $el->likes,
                 'img' => $el->img,
-                'post_category_id' => $el->postCategoryId
+                'post_category_id' => $el->postCategoryId,
+                'created_at' => $el->created_at
             ]);
         }
     }

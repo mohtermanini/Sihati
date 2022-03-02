@@ -5,7 +5,8 @@
   "views" : 4,
   "likes" : 1,
   "img" : "files/posts/التمر.jpg",
-  "postCategoryId" : 4
+  "postCategoryId" : 4,
+  "created_at": "2022-02-26"
   },
   {
   "title" : "نصائح لفطور صحي في رمضان",
@@ -13,7 +14,8 @@
   "views" : 2,
   "likes" : 0,
   "img" : "files/posts/إفطار.jpg",
-  "postCategoryId" : 4
+  "postCategoryId" : 4,
+  "created_at": "2022-02-21"
   },
   {
   "title" : "الصحة العالمية تحذر من التركيز على لقاح كورونا وتعطيل المطاعيم الأخرى",
@@ -21,7 +23,8 @@
   "views" : 1,
   "likes" : 0,
   "img" : "files/posts/لقاح.jpg",
-  "postCategoryId" : 3
+  "postCategoryId" : 3,
+  "created_at": "2022-02-23"
   },
   {
   "title" : "أعشاب تساعد على الحمل وتنشيط المبايض",
@@ -29,7 +32,8 @@
   "views" : 1,
   "likes" : 0,
   "img" : "files/posts/أعشاب.jpg",
-  "postCategoryId" : 4
+  "postCategoryId" : 4,
+  "created_at": "2022-01-29"
   },
   {
   "title" : "فوائد زيت القرع أو زيت اليقطين",
@@ -37,7 +41,8 @@
   "views" : 1,
   "likes" : 1,
   "img" : "files/posts/قرع.jpg",
-  "postCategoryId" : 4 
+  "postCategoryId" : 4 ,
+  "created_at": "2022-03-1"
   }
   ]
   
