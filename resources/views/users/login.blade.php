@@ -55,7 +55,7 @@
 					<label for="emailOrUserName" class="form-label">اسم المستخدم أو البريد الالكتروني</label>
 				<input type="text" class="form-control text-start box-shadow-none 
 						{{Session::has('emailOrUserName')?'is-invalid':''}}"
-						 name="emailOrUserName" id="emailOrUserName" placeholder="اسم المستخدم أو البريد الالكتروني" 
+						 name="emailOrUserName" id="emailOrUserName" placeholder=" " 
                          value="{{session()->get('emailOrUserName')}}" required autofocus>
 						@if(Session::has('emailOrUserName'))
 							<span class="invalid-feedback" role="alert">
@@ -66,7 +66,7 @@
 				<div class="form-group">
 					<label for="password">كلمة المرور</label>
 					<input type="password" class="form-control box-shadow-none" name="password"
-						id="password" placeholder="كلمة المرور" required>
+						id="password" placeholder=" " required>
 				</div>
 	
 				<div class="form-group recapatcha-container flex-center
