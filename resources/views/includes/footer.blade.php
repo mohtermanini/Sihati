@@ -18,7 +18,7 @@
             <div class="row mt-3">
                 <div class="col">
                         <p class="mb-0 text-white" style="direction: ltr;">
-                            &copy; 2022 Ahmad Madany | Mohammad Termanini | Mohanad Shaban
+                            &copy; 2022 Ahmad Madany | Mohamad Termanini | Mohanad Shaban
                         </p>
                     </div>
             </div>
