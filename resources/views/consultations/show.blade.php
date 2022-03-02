@@ -144,9 +144,13 @@
                 <!-- Comments -->
                 <hr class="mt-5">
                 <!-- Write comment -->
-                @if(Auth::check() && 
-                      (Auth::id() == $consultation->user_id || 
-                                Auth::user()->type_id == Config::get('type_doctor_id')) )
+                @if(Auth::check()
+                        && (
+                        Auth::id() == $consultation->user_id
+                        || Auth::user()->type_id == Config::get('type_doctor_id')
+                        || Auth::user()->type_id == Config::get('type_admin_id')
+                        )
+                    )
                 <div class="card mt-5">
                     <div class="card-body">
                         <h5 class="text-center">كتابة تعليق</h5>

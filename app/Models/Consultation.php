@@ -33,10 +33,12 @@ class Consultation extends Model
     public function commentWriterName(){
         $user = Auth::user();
         $name = null;
-        if($user->type_id  == Config::get('type_doctor_id')){
+        if ($user->type_id  == Config::get('type_doctor_id')) {
             $name = $user->profile->first_name . " " . $user->profile->last_name;
-        }elseif($user->id ==  $this->user_id){
+        } elseif($user->id ==  $this->user_id) {
             $name =  $user->user_name;
+        } elseif ($user->type_id == Config::get("type_admin_id")) {
+            $name = $user->profile->first_name;
         }
         return $name;
     }
