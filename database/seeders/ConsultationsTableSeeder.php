@@ -23,7 +23,8 @@ class ConsultationsTableSeeder extends Seeder
                 'content' => $el->content,
                 'views' => $el->views,
                 'user_id' => $el->user_id,
-                'consultation_category_id' => $el->consultation_category_id
+                'consultation_category_id' => $el->consultation_category_id,
+                'created_at' => $el->created_at
             ]);
         }
     }
