@@ -17,7 +17,9 @@
             </div>
             <div class="row mt-3">
                 <div class="col">
-                        <p class="mb-0 text-white" style="direction: ltr;">&copy; 2021 Mohammad Termanini</p>
+                        <p class="mb-0 text-white" style="direction: ltr;">
+                            &copy; 2022 Ahmad Madany | Mohammad Termanini | Mohanad Shaban
+                        </p>
                     </div>
             </div>
         </div>
