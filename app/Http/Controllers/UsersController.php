@@ -61,7 +61,7 @@ class UsersController extends Controller
         ]);
         if( $validator->fails() ){
             Session::flash("failed",$validator->errors()->first());;
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
         $failedMsg = $this->duplicatedUserNameOrEmail($request->email,$request->user_name);
         if(isset($failedMsg)){
@@ -277,7 +277,6 @@ class UsersController extends Controller
     public function signup(){
         $jobs = Job::all();
         $page_title = 'إنشاء حساب' . Config::get('page_title_end');
-        request()->flash();
         return view('users.signup')->with("jobs",$jobs)->with("page_title",$page_title);
     }
 
