@@ -287,11 +287,16 @@ class UsersController extends Controller
         }
         $user = User::with("profile.jobs")->find(Auth::id());
         $consultations = Consultation::with("comments","user.profile")
-                        ->where('user_id',Auth::id())->paginate(1);
+                        ->where('user_id',Auth::id())
+                        ->paginate(Config::get("pagination_num"), ["*"], "consultations_page")
+                        ->withQueryString();
+
         $posts = Post::select("posts.*")->join('post_user','post_id','=','posts.id')->
                         where('user_id',$user->id)
                         ->orderBy("created_at","desc")
-                        ->paginate(Config::get("pagination_num"));
+                        ->paginate(Config::get("pagination_num"), ["*"], "posts_page")
+                        ->withQueryString();
+
         $tab = request()->query('tab',1);
         $page_title = "الصفحة الشخصية" . Config::get("page_title_end");
         return view("users.profile")->with(["user"=>$user,

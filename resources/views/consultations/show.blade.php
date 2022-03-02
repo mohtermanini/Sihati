@@ -68,6 +68,9 @@
                 </header>
 
                 <!-- Comments -->
+                @if($comments->count() == 0)
+                    <p class="my-5 fw-bold text-center">لا يوجد تعليقات</p>
+                @endif
                 <?php $i= 0; ?>
                 @foreach($comments as $comment)
                     <div class="card {{$i++==0?'mt-5':'mt-3'}} ">

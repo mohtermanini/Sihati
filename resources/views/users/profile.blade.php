@@ -52,19 +52,19 @@
                                     <div class="form-group">
                                         <label for="" class="form-label">الاسم الأول</label>
                                         <input type="text" class="form-control  box-shadow-none" name="fname"
-                                            value="{{ $user->profile->first_name }}" placeholder="الاسم الأول"
+                                            value="{{ $user->profile->first_name }}" placeholder=" "
                                             autocomplete="off" readonly>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="" class="form-label">الاسم الأخير</label>
                                         <input type="text" class="form-control box-shadow-none" name="lname"
-                                            value="{{ $user->profile->last_name }}" placeholder="الاسم الأخير"
+                                            value="{{ $user->profile->last_name }}" placeholder=" "
                                             autocomplete="off" readonly>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="" class="form-label">البريد الالكتروني</label>
                                         <input type="email" class="form-control text-start  box-shadow-none" name="email"
-                                            value="{{ $user->email }}" placeholder="البريد الالكتروني" required
+                                            value="{{ $user->email }}" placeholder=" " required
                                             readonly>
                                         <div class="form-check mt-2">
                                             <input class="form-check-input box-shadow-none" type="checkbox" name="email_visible" {{$user->profile->email_visible?'checked':''}} disabled>
@@ -77,14 +77,14 @@
                                     <div class="form-group mt-3">
                                         <label for="" class="form-label">اسم المستخدم</label>
                                         <input type="text" class="form-control  box-shadow-none" name="user_name"
-                                            value="{{ $user->user_name }}" placeholder="اسم المستخدم" required
+                                            value="{{ $user->user_name }}" placeholder=" " required
                                             readonly>
                                     </div>
 
                                     <div class="form-group mt-3">
                                         <label for="" class="form-label">تاريخ الميلاد</label>
                                         <input type="date" class="form-control text-start  box-shadow-none" name="birthday"
-                                            value="{{ $user->profile->birthday }}" placeholder="تاريخ الميلاد"
+                                            value="{{ $user->profile->birthday }}" placeholder=" "
                                             readonly>
                                         <div class="form-check mt-2">
                                             <input class="form-check-input box-shadow-none" type="checkbox" name="birthday_visible" {{$user->profile->birthday_visible?'checked':''}} disabled>
@@ -107,7 +107,8 @@
                                     @if($user->type_id != Config::get('type_normal_id'))
                                     <div class="form-group mt-3">
                                         <label class="form-label">الوصف</label>
-                                        <textarea name="description" class="form-control box-shadow-none" rows="7" placeholder="الوصف"
+                                        <textarea name="description" class="form-control box-shadow-none" rows="7" 
+                                        placeholder=" "
                                             readonly>{{$user->profile->description}}</textarea>
                                     </div>
                                     @endif
