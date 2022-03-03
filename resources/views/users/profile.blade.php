@@ -27,22 +27,22 @@
             <div class="col-md-8">
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="nav-item">
-                        <button class="nav-link btnTab active" data-bs-toggle="tab" 
+                        <button class="nav-link btnTab {{ $tab == 1 ? "active":"" }}" data-bs-toggle="tab" 
 												data-bs-target="#profile">الملف الشخصي</button>
                     </li>
                     <li class="nav-item">
-                        <button class="nav-link text-dark btnTab" data-bs-toggle="tab"
+                        <button class="nav-link text-dark btnTab {{ $tab == 2 ? "active":"" }}" data-bs-toggle="tab"
                             data-bs-target="#consultations">الاستشارات الطبية</button>
                     </li>
                     @if($user->type_id != Config::get('type_normal_id'))
                         <li class="nav-item">
-                            <button class="nav-link text-dark btnTab" data-bs-toggle="tab"
+                            <button class="nav-link text-dark btnTab {{ $tab == 3 ? "active":"" }}" data-bs-toggle="tab"
                                 data-bs-target="#posts">المقالات</button>
                         </li>
                     @endif
                 </ul>
                 <div class="tab-content mt-3">
-                    <div class="tab-pane fade show active" id="profile">
+                    <div class="tab-pane fade {{ $tab == 1 ? "show active":"" }}" id="profile">
                         <div class="card">
                             <div class="card-body">
                                 <form id="personalForm" action="{{ route('users.update') }}"
@@ -134,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade show" id="consultations">
+                    <div class="tab-pane fade {{ $tab == 2 ? "show active":"" }}" id="consultations">
                         <div class="card">
                             <div class="card-body d-flex align-items-center justify-content-between flex-wrap">
                                 <p class="mb-0 fw-bold">لديك سؤال وتحتاج إلى استشارة؟</p>
@@ -162,7 +162,7 @@
                 @endif
                     </div>
                     @if($user->type_id != Config::get('type_normal_id'))
-                        <div class="tab-pane fade show" id="posts">
+                        <div class="tab-pane fade {{ $tab == 3 ? "show active":"" }}" id="posts">
                             <!-- Post Write -->
                             <div class="card">
                                 <div class="card-body">
@@ -286,6 +286,13 @@
             $("#btnSubmit").addClass('d-none');
 
         });
+
+        // const triggerTabList = [].slice.call(document.querySelectorAll("#myTab button"));
+        // triggerTabList.forEach(function (triggerEl) {
+        //     const tabTrigger = new bootstrap.Tab(triggerEl)
+        // });
+        // bootstrap.Tab.getInstance(triggerTabList[{{$tab}} - 1]).show()
+
     });
 
 </script>
@@ -294,8 +301,8 @@
 
 @section('styles')
     <style>
-    .nav-tabs .nav-item .active{
-        color: #0dcaf0!important;
-    }
+        .nav-tabs .nav-item .active{
+            color: #0dcaf0!important;
+        }
     </style>
 @endsection

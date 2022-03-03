@@ -46,7 +46,9 @@ class PostsController extends Controller
         $posts = GeneralController::paginate($posts,Config::get("pagination_num"));
 
         $famousWritersNum = 4;
-        $famousWriters = $this->getFamousWriters($famousWritersNum);
+        $famousWriters = $this->getFamousWriters(
+            $famousWritersNum, ( $postCategory != null ?  $postCategory->id : -1)
+        );
         
         $tags = Tag::all();
         request()->flash();
@@ -251,11 +253,13 @@ class PostsController extends Controller
         return redirect()->route('posts.index',['slug'=>$post->post_category->slug]);
     }
 
-    public function getFamousWriters($famousWritersNum){
+    public function getFamousWriters($famousWritersNum, $post_category_id){
         $famousWriters = PostUser::with('user.profile.jobs')
                     ->join('posts','post_id','=','posts.id')
                     ->select('user_id', DB::raw("count(*) as num_posts"))
-                    ->whereRaw('post_category_id'. (isset($slug)?' = '.$postCategory->id:' is not null'))
+                    ->whereRaw(
+                        'post_category_id'
+                        . ($post_category_id !== -1?' = '.$post_category_id:' is not null'))
                     ->groupby('user_id')
                     ->orderBy('num_posts','desc')
                     ->limit($famousWritersNum)
