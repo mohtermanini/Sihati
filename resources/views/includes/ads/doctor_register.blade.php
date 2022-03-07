@@ -1,4 +1,6 @@
-@if(!Auth::check() || Auth::user()->type_id != Config::get("type_doctor_id"))
+@if(!Auth::check() 
+    || Auth::user()->type_id == Config::get("type_normal_id")
+)
 <div class="card mb-3">
     <div class="card-body text-center">
         <h4 class="card-title mb-3">هل أنت طبيب؟</h4>

@@ -49,7 +49,9 @@ Route::get('profiles/doctors/search','UsersController@doctorsSearch')->name('pro
 /* Users */
 
 /* Consultations */
-Route::resource('consultations','ConsultationsController')->except(['show']);
+Route::resource('consultations','ConsultationsController')
+      ->except(['show', 'index'])->middleware(['auth']);
+Route::resource('consultations','ConsultationsController')->only(['index']);
 Route::get('consultations/{id}-{slug}','ConsultationsController@show')->name('consultations.show');
 /* Consultations */
 

@@ -23,7 +23,8 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                session()->flash("failed", "يجب عليك تسجيل الخروج أولاً");
+                return redirect()->back();
             }
         }
 

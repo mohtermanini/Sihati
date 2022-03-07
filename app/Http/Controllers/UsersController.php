@@ -265,7 +265,7 @@ class UsersController extends Controller
         Auth::loginUsingId($user->id,true);
         $request->session()->regenerateToken();
         $previous_entry_url = session()->get('previous_entry_url', route('index'));
-        return redirect($previous_entry_url);
+        return redirect()->intended($previous_entry_url);
     }
 
     public function logout(Request $request){
