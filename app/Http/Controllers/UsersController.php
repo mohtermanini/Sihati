@@ -114,7 +114,10 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::with("profile")->findOrFail($id);
-        if($user->type_id != Config::get("type_doctor_id")){
+        if(
+            $user->type_id != Config::get("type_doctor_id")
+            && $user->type_id != Config::get("type_admin_id")
+            ){
             return redirect()->back();
         }
         $page_title = $user->profile->getFullName() . Config::get('page_title_end');

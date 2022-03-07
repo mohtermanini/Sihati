@@ -53,18 +53,20 @@
               </div>
             </div>
             @endif
-            <div class="form-group">
-              <label class="form-label fw-bold text-warning">التخصصات</label>
-              <ul class="mt-2 list-unstyled">
-              @foreach($user->profile->jobs as $job)
-              <li class="d-inline-block mb-3">
-                  <button type="button" class="btn btn-outline-info me-2 btn-sm rounded-pill">
-                  {{$job->title}}  
-                  </button>
-              </li>
-              @endforeach
-              </ul>
-          </div>
+            @if ($user->type_id == Config::get('type_doctor_id'))
+              <div class="form-group">
+                <label class="form-label fw-bold text-warning">التخصصات</label>
+                <ul class="mt-2 list-unstyled">
+                @foreach($user->profile->jobs as $job)
+                <li class="d-inline-block mb-3">
+                    <button type="button" class="btn btn-outline-info me-2 btn-sm rounded-pill">
+                    {{$job->title}}  
+                    </button>
+                </li>
+                @endforeach
+                </ul>
+            </div>
+          @endif
 
           </div>
         </div>
