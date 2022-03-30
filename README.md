@@ -12,6 +12,17 @@ You can enter the demo website from [here](https://sihati.herokuapp.com).
 *	Consultation section for asking medical queries.
 *	The website is fully responsive.
 
+## Technical section
+* Languages:
+	* PHP
+	* Laravel framework
+	* MySQL
+	* HTML
+	* CSS
+	* Bootstrap v5
+	* Javascript
+	* JQuery
+
 ## Developer
 Mohamad Termanini
 ### Contact Info
