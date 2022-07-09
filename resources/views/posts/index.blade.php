@@ -166,7 +166,7 @@
               <div class="card-body text-center">
             <h4 class="card-title mb-3">لديك سؤال وتريد استشارة طبيب؟</h4>
             <small>سجل وأرسل جميع استفساراتك</small> 
-            <a href="{{ route('signup') }}"
+            <a href="{{ route('users.create') }}"
                  class="btn btn-outline-info d-block mt-3">تسجيل</a> </div>
             </div>
             @endif

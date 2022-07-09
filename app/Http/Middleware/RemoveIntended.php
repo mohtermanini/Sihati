@@ -19,7 +19,7 @@ class RemoveIntended
         if (
             session()->has("url.intended")
             &&  (
-                $request->url() != route('login') && $request->url() != route('signup')
+                $request->url() != route('login') && $request->url() != route('users.create')
             )
         ) {
             session()->remove("url.intended");

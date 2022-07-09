@@ -90,7 +90,7 @@
 			<div  class="mt-5 text-center">
 			<small class="text-muted">
 			ليس لديك حساب؟
-			<a href="{{ route('signup') }}" class="text-decoration-none text-info">سجل الآن</a>
+			<a href="{{ route('users.create') }}" class="text-decoration-none text-info">سجل الآن</a>
 			</small>
 			</div>
 		</div>
