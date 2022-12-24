@@ -35,11 +35,6 @@ class PostCategoriesTableSeeder extends Seeder
             'name' => 'التغذية',
             'slug' => GeneralController::make_slug('التغذية'),
             'img' => 'files/post_categories/التغذية.jpg'
-            ],
-            [
-            'name' => 'العمليات الجراحية',
-            'slug' => GeneralController::make_slug('العمليات الجراحية'),
-            'img' => 'files/post_categories/العمليات الجراحية.jpg'
             ]
         ]);
     }

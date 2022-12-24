@@ -51,6 +51,14 @@ class PostUserTableSeeder extends Seeder
                 'post_id' => 5,
                 'user_id' => 3
             ],
+            [
+                'post_id' => 6,
+                'user_id' => 3
+            ],
+            [
+                'post_id' => 6,
+                'user_id' => 7
+            ]
         ]);
     }
 }
