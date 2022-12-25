@@ -1,7 +1,7 @@
 # Sihati
 A medical blog and consultation website.
 
-**You can enter the demo website from [here](https://sihati.herokuapp.com).**
+**You can enter the demo website from [here](https://sihatiteb.000webhostapp.com).**
 
 ## Features
 *	Three main users types:
